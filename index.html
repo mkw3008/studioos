@@ -1170,6 +1170,13 @@
   ];
 
   const barsEl=$('kvBars'), cardsEl=$('kvCards');
+  const cardProviders=[
+    providers.find(p=>p.key==='studio'),
+    providers.find(p=>p.key==='bsport'),
+    providers.find(p=>p.key==='ever'),
+    providers.find(p=>p.key==='stripe'),
+    providers.find(p=>p.key==='mollie'),
+  ];
 
   providers.forEach(p=>{
     const b=document.createElement('div'); b.className='bar-block';
@@ -1182,7 +1189,9 @@
       <div class="seg" id="segf_${p.key}" style="background:var(--fixseg)"></div>
       </div></div><span class="bar-total" id="tot_${p.key}">–</span></div>`;
     barsEl.appendChild(b);
+  });
 
+  cardProviders.forEach(p=>{
     const c=document.createElement('div');
     c.className='pcard'+(p.key==='studio'?' studio-card':'');
     c.innerHTML=`<h3><span class="brand-dot" style="background:${p.color}"></span>${p.name}</h3>
